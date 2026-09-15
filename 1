@@ -2,8 +2,8 @@
 ; (_esvg-arrow/theta 0 0 10 10)
 
 (defun _esvg-arrow/p1    (l1x l1y dx dy theta)
-   q(cons (- l1x (   * dx (cos theta))  (* dy (sin theta)))
-   q      (+ l1y (- (* dx (sin theta))) (* dy (cos theta)))))
+   (cons (- l1x (   * dx (cos theta))  (* dy (sin theta)))
+         (+ l1y (- (* dx (sin theta))) (* dy (cos theta)))))
 ;      (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10))
 ; (car (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
 ; (cdr (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
