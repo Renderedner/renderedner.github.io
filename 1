@@ -1,0 +1,35 @@
+(defun _esvg-arrow/theta (x0 y0 l1x l1y)             (atan (- l1y y0) (- l1x x0)))
+; (_esvg-arrow/theta 0 0 10 10)
+
+(defun _esvg-arrow/p1    (l1x l1y dx dy theta)
+   q(cons (- l1x (   * dx (cos theta))  (* dy (sin theta)))
+   q      (+ l1y (- (* dx (sin theta))) (* dy (cos theta)))))
+;      (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10))
+; (car (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
+; (cdr (_esvg-arrow/p1 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
+
+(defun _esvg-arrow/p2    (l1x l1y dx dy theta)
+    (cons (+ (- l1x (* dx (cos theta))) (* dy (sin theta)))
+             (- l1y (* dx (sin theta)) (* dy (cos theta)))))
+;      (_esvg-arrow/p2 10 10 2 2 (_esvg-arrow/theta 0 0 10 10))
+; (car (_esvg-arrow/p2 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
+; (cdr (_esvg-arrow/p2 10 10 2 2 (_esvg-arrow/theta 0 0 10 10)))
+
+ (load-esvg)                             ; (find-angg ".emacs" "load-esvg")
+(defun d (&rest r) (show-svg))            ; display
+(defun sta  (o)    (setq svg o svg-a o))  ; set top-level and append
+(defun a    (o)    (esvg-append svg-a o)) ; append
+(defun ad   (o)    (a o) (d))             ; append and display
+
+(sta (svg-create          500 500 :stroke "black" :stroke-width 1))
+(ad  (esvg-rectangle 0 0  500 500 :fill "white"))
+(let ((dx 10) (dy  5) (x0 0) (y0 0) (x1 250) (y1 250))
+ (ad (esvg-line x0 x0 x1 y1))
+ (ad (esvg-line       x1 y1 (car (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1))) (cdr (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
+ (ad (esvg-line       x1 y1 (car (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1))) (cdr (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
+)
+
+Faltou entender como as coisas podem ser agrupadas.. 
+Eu sei que 'ad' adiciona um objeto em outro, e o objeto exibido é o top-level objeto
+Me parece que é possível definir um novo objeto onde coisas são adicionadas, e aí mais de uma linha deve ficar agrupada num mesmo grupo
+
