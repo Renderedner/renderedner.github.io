@@ -23,13 +23,16 @@
 
 (sta (svg-create          500 500 :stroke "black" :stroke-width 1))
 (ad  (esvg-rectangle 0 0  500 500 :fill "white"))
-(let ((dx 10) (dy  5) (x0 0) (y0 0) (x1 250) (y1 250))
+(let ((dx 10) (dy  5) (x0 0) (y0 0) (x1 250) (y1 250)
+      (p1x (car (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1))))
+      (p1y (cdr (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
+      (p2x (car (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
+      (p2y (cdr (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
  (ad (esvg-line x0 x0 x1 y1))
- (ad (esvg-line       x1 y1 (car (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1))) (cdr (_esvg-arrow/p1 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
- (ad (esvg-line       x1 y1 (car (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1))) (cdr (_esvg-arrow/p2 x1 y1 dx dy (_esvg-arrow/theta x0 y0 x1 y1)))))
+ (ad (esvg-line       x1 y1 p1x p1y))
+ (ad (esvg-line       x1 y1 p2x p2y))
 )
 
 Faltou entender como as coisas podem ser agrupadas.. 
 Eu sei que 'ad' adiciona um objeto em outro, e o objeto exibido é o top-level objeto
 Me parece que é possível definir um novo objeto onde coisas são adicionadas, e aí mais de uma linha deve ficar agrupada num mesmo grupo
-
