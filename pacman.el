@@ -42,11 +42,25 @@ sudo pacman -S {pkg}
 
 # (find-man \"8 pacman\" \"-F, --files\" \"look for pack\" \"ages owning certain files or display files owned by certain  packages\")
 # (find-sh \"pacman -F --help\")
+ (eepitch-shell)
+ (eepitch-kill)
+ (eepitch-shell)
+pacman -F perl
 
  (eepitch-shell)
  (eepitch-kill)
  (eepitch-shell)
-pacman -F {pkg}
+pacman -Ss
+pacman -Ss '^perl-'
+pacman -Ss '^perl-' | grep ^[a-z]
+
+# (find-man \"8 pacman\" \"-Q, --query\" \"view in\" \"stalled packages and their files\")
+ (eepitch-shell)
+ (eepitch-kill)
+ (eepitch-shell)
+pacman -Qs 
+pacman -Qs '^perl-'
+pacman -Qs '^perl-' | grep ^[a-z]
 ")
      )
    pos-spec-list))
