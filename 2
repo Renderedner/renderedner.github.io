@@ -4,17 +4,26 @@
 # (find-wget-elisp "https://renderedner.github.io/0" "sync database with the -S flag")
 # (find-wget-elisp "https://renderedner.github.io/0" "files database with the -F flag")
 
-; (find-~sh "pacman -Q --help")
-; (find-~sh "pacman -S --help")
-; (find-~sh "pacman -F --help")
+; (find-sh "pacman -Q --help")
+; (find-sh "pacman -S --help")
+; (find-sh "pacman -F --help")
 
-# (find-wget-elisp "https://renderedner.github.io/0" "search for packages in the database"                "pacman -Ss string1 string2")
-# (find-wget-elisp "https://renderedner.github.io/0"                                                      "pacman -Ss '^vim-'")
-# (find-wget-elisp "https://renderedner.github.io/0" "search for already installed packages"              "pacman -Qs string1 string2")
-# (find-wget-elisp "https://renderedner.github.io/0" "search for package file names in remote packages"   "pacman -F string1 string2")
-# (find-wget-elisp "https://renderedner.github.io/0" "list of the files installed by a package"           "pacman -Ql package_name")
-# (find-wget-elisp "https://renderedner.github.io/0" "a list of the files installed by a remote package:" "pacman -Fl package_name")
+# (find-wget-elisp "https://renderedner.github.io/0" "search for packages in the database"                 "pacman -Ss string1 string2")
+# (find-wget-elisp "https://renderedner.github.io/0"                                                       "pacman -Ss '^vim-'")
+# (find-wget-elisp "https://renderedner.github.io/0" "search for already installed packages"               "pacman -Qs string1 string2")
+# (find-wget-elisp "https://renderedner.github.io/0" "search for package file names in remote packages"    "pacman -F string1 string2")
+# (find-wget-elisp "https://renderedner.github.io/0" "list of the files installed by a package"            "pacman -Ql package_name")
+# (find-wget-elisp "https://renderedner.github.io/0" "a list of the files installed by a remote package:"  "pacman -Fl package_name")
+# (find-wget-elisp "https://renderedner.github.io/0" "which package a file in the file system belongs to"  "pacman -Qo /path/to/ﬁle_name")
+# (find-wget-elisp "https://renderedner.github.io/0" "which remote package a file belongs to"              "pacman -F /path/to/ﬁle_name")
+
+(find-man "pacman")
 
  (eepitch-vterm)
 sudo pacman -Fy
 pacman -Fl perl
+
+pacman -F lynx
+# [redner@redner renderedner.github.io]$ pacman -F lynx
+# extra/lynx 2.9.3-1 [installed]
+#     usr/bin/lynx
