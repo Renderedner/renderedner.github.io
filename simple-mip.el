@@ -1,14 +1,30 @@
 ; «find-autossh-minipaste-links2»  (to ".find-autossh-minipaste-links2")
 ; «find-pacman-links-ss»  (to ".find-pacman-links-ss")
 ; «ochs-awk-cut-example»  (to ".ochs-awk-cut-example")
+; «well-written-mip-scp-escript»  (to ".well-written-mip-scp-escript")
+
+; Saving this file to github:
+; (find-githubio-links "renderedner" "simple-mip.el" 2 " Upload the file" '(eek "2*C-l"))
 
 ; Ochs: Eu fiz algo parecido aqui:
 ; (find-wget-elisp "http://anggtwu.net/p/mip.el")
 
 
+; «.well-written-mip-scp-escript»	(to "well-written-mip-scp-escript")
+(defun ee-mip-brnm ()
+(setq ee-mip-dir-local   "/tmp/mip/")
+(setq ee-mip-dir-remote  "/tmp/mip/")
+(setq ee-mip-user-remote "redner_vps@justclaymoving.xyz")
+(setq ee-mip-http-remote "http://justclaymoving.xyz/")
+(setq ee-mip-http-port   "8888"))
 
-
-
+(find-wget-elisp "http://anggtwu.net/p/mip.el")
+(find-wget-elisp "http://anggtwu.net/p/mip.el" "ee-minipaste-find-wgets")
+(find-efunction 'ee-minipaste-find-wgets)
+;;       (ee-mip-brnm)
+;; Test: (eepitch-mip-hs)
+;; Test: (find-estring-sh (ee-mip-hs-0))
+;; Test: (find-estring-sh (ee-mip-scp-0 "o"))
 
 
 
@@ -55,7 +71,7 @@ echo $N
   (setq fullfname (or fullfname "{fullfname}"))
   (let* ((fname (file-name-nondirectory fullfname)))
     (apply
-     'find-elinks-sh
+     'find-elinks
      `((find-autossh-minipaste-links2 ,fullfname ,@pos-spec-list)
        ;; Convention: the first sexp always regenerates the buffer.
        (find-efunction 'find-autossh-minipaste-links2)
@@ -93,7 +109,9 @@ ss -atn -p
 
 
 # (find-fline \"/tmp/mip/\")
- (eepitch-shell)
+# (find-eev \"eepitch.el\" \"eepitch-shell\")
+
+ (eepitch '(shell \"shell-mip-server\")
 mkdir -p /tmp/mip/
 # cp {fullfname} /tmp/mip/
 cd      /tmp/mip
